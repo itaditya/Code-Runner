@@ -29,5 +29,5 @@
 
  1. Fork and clone the repo.
  2. In project directory, run `npm i`.
- 3. Now run 'npm start' to start the server.
+ 3. Now run `npm start` to start the server.
  4. Run `npm run client` to start webpack build task.
