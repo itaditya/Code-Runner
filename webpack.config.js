@@ -27,6 +27,5 @@ module.exports = {
     modules: [
       __dirname + '/node_modules'
     ],
-  },
-  watch: true
+  }
 };
