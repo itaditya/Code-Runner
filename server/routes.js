@@ -1,0 +1,20 @@
+const path = require('path');
+const _ = require('lodash');
+
+const services = require('./services');
+
+module.exports = (app) => {
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve('client', 'index.html'));
+  });
+
+  app.post('/submit', (req, res) => {
+    console.log(req.headers);
+    console.log(req.body);
+    const data = _.pick(req.body, ['input', 'ext', 'sourceCode']);
+    console.log(data);
+    services.submitCode(data, (body) => {
+      res.send(body);
+    })
+  })
+}

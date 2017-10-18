@@ -1,0 +1,38 @@
+{
+  "name": "CodeRunner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js --ignore client",
+    "client": "webpack",
+    "build": "webpack -p"
+  },
+  "keywords": [],
+  "author": "Aditya Agarwal <adityaa803@gmail.com> (http://adi.surge.sh/)",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "dependencies": {
+    "ace": "^1.3.0",
+    "body-parser": "^1.18.2",
+    "brace": "^0.10.0",
+    "compression": "^1.7.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.0",
+    "request": "^2.83.0"
+  }
+}
