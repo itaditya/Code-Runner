@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js --ignore client",
     "client": "webpack --progress --watch",
-    "build": "webpack -p",
+    "build": "webpack -p"
   },
   "keywords": [],
   "author": "Aditya Agarwal <adityaa803@gmail.com> (http://adi.surge.sh/)",
