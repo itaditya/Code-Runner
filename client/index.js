@@ -4,12 +4,17 @@ import style from './index.scss';
 import languages from './utilities/languages.js';
 import editor from './utilities/aceSetup.js';
 
-editor.setValue(`print(47);`);
+editor.setValue(`print(input());`);
 
+const submitBtn = document.getElementById('submitBtn');
+const langSel = document.getElementById('langSel');
+const outputTxt = document.getElementById('outputTxt');
+const inputTxt = document.getElementById('inputTxt');
 let currentLang = 'python';
 
 const submitFn = function (event) {
   const sourceCode = editor.getValue();
+  const input = inputTxt.value;
   fetch('/submit', {
     method: 'POST',
     headers: {
@@ -17,7 +22,7 @@ const submitFn = function (event) {
     },
     body: JSON.stringify({
       language: currentLang,
-      input: '42',
+      input,
       sourceCode
     })
   }).then(res => {
@@ -26,7 +31,12 @@ const submitFn = function (event) {
       return;
     }
     res.json().then(data => {
-      console.log(data);
+      let outputHtml = data.stdout;
+      if(data.stderr.length !== 0){
+        outputHtml = `Error \n${data.stderr}`;
+      }
+      outputTxt.value = outputHtml;
+
     }).catch(err => {
       console.log('Some error occured');
     })
@@ -51,7 +61,7 @@ selectLangFn(currentLang);
 const langSelFn = function(event) {
   selectLangFn(languages[event.target.selectedIndex]);
 }
-document.getElementById('langSel').addEventListener('change', langSelFn);
 
-document.getElementById('submitBtn').addEventListener('click', submitFn);
+submitBtn.addEventListener('click', submitFn);
+langSel.addEventListener('change', langSelFn);
 

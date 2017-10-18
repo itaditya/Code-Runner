@@ -6,6 +6,7 @@ import 'brace/mode/javascript';
 import 'brace/theme/solarized_dark';
 
 const editor = ace.edit('editor');
+
 editor.setTheme('ace/theme/solarized_dark');
 editor.getSession().setUseSoftTabs(true);
 editor.getSession().setTabSize(2);
