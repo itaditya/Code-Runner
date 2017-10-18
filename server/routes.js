@@ -9,10 +9,8 @@ module.exports = (app) => {
   });
 
   app.post('/submit', (req, res) => {
-    console.log(req.headers);
     console.log(req.body);
-    const data = _.pick(req.body, ['input', 'ext', 'sourceCode']);
-    console.log(data);
+    const data = _.pick(req.body, ['language', 'input', 'sourceCode']);
     services.submitCode(data, (body) => {
       res.send(body);
     })

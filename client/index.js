@@ -1,31 +1,24 @@
-import _ from 'lodash'
-import ace from 'brace';
+import _ from 'lodash';
 
 import style from './index.scss';
-import 'brace/mode/python';
-import 'brace/theme/solarized_dark';
+import languages from './utilities/languages.js';
+import editor from './utilities/aceSetup.js';
 
-const editor = ace.edit('editor');
-editor.setTheme('ace/theme/solarized_dark');
-editor.getSession().setMode('ace/mode/python');
-editor.getSession().setUseSoftTabs(true);
-editor.getSession().setTabSize(2);
-editor.getSession().setUseWrapMode(true);
+editor.setValue(`print(47);`);
 
-editor.setValue('print (43)');
+let currentLang = 'python';
 
 const submitFn = function (event) {
   const sourceCode = editor.getValue();
-  console.log(sourceCode);
   fetch('/submit', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
     },
     body: JSON.stringify({
-      ext: '.py',
-      sourceCode,
-      input: '42'
+      language: currentLang,
+      input: '42',
+      sourceCode
     })
   }).then(res => {
     if (res.status !== 200) {
@@ -34,9 +27,31 @@ const submitFn = function (event) {
     }
     res.json().then(data => {
       console.log(data);
+    }).catch(err => {
+      console.log('Some error occured');
     })
-  })
-
+  }).catch(err => {
+      console.log('Some error occured again');
+    })
 }
 
+const selectLangFn = function(selectedLang) {
+  if(languages.includes(selectedLang)){
+    currentLang = selectedLang;
+    let aceLang = currentLang;
+    if(aceLang === 'c'){
+      aceLang = 'c_cpp';
+    }
+    editor.getSession().setMode(`ace/mode/${aceLang}`);
+  }
+}
+
+selectLangFn(currentLang);
+
+const langSelFn = function(event) {
+  selectLangFn(languages[event.target.selectedIndex]);
+}
+document.getElementById('langSel').addEventListener('change', langSelFn);
+
 document.getElementById('submitBtn').addEventListener('click', submitFn);
+

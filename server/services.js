@@ -3,7 +3,7 @@ const request = require('request');
 module.exports = {
   submitCode: function(data, cb) {
     request({
-      url: 'https://run.glot.io/languages/python/latest/',
+      url: `https://run.glot.io/languages/${data.language}/latest/`,
       method: 'POST',
       json: true,
       headers: {
@@ -13,7 +13,7 @@ module.exports = {
       json: {
         stdin: data.input,
         files: [{
-          name: `main.${data.ext}`,
+          name: 'main',
           content: data.sourceCode
         }]
       }
