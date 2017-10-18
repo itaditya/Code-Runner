@@ -10,7 +10,8 @@
  4. Keyboard Control
  5. Refactor
  6. Code annotation and an open chat for particular code. (Useful for a user to help debug other's code)
-
+ 
+![](https://i.imgur.com/8zOVrfH.gif)
 
 ## Currently Supported Languages
  1. Python
