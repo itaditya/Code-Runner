@@ -12,8 +12,7 @@
       </div>
       <div class="col" id="result-col">
         <div class="container">
-          <div class="row"></div>
-          <div class="row">
+          <div class="row" id="action-row">
             <select name="selectedLang" id="langSel">
               <option value="python">Python</option>
               <option value="c">C</option>
@@ -21,6 +20,16 @@
               <option value="js">Javascript</option>
             </select>
             <button id="submitBtn">Run Code</button>
+          </div>
+          <div class="row" id="io-row">
+            <div class="container" id="io-container">
+              <div class="row" id="output-row">
+                <textarea name="" id="outputTxt" placeholder="Output will be displayed here"></textarea>
+              </div>
+              <div class="row" id="input-row">
+                <textarea name="" id="inputTxt" placeholder="Custom input can be entered here"></textarea>
+              </div>
+            </div>
           </div>
         </div>
       </div>
