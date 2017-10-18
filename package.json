@@ -12,7 +12,6 @@
     "start": "nodemon index.js --ignore client",
     "client": "webpack --progress --watch",
     "build": "webpack -p",
-    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "Aditya Agarwal <adityaa803@gmail.com> (http://adi.surge.sh/)",
