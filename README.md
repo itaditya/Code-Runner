@@ -1,3 +1,5 @@
+[![GitHub package version](https://img.shields.io/github/package-json/v/itaditya/Code-Runner.svg)](https://github.com/itaditya/Code-Runner) [![GitHub issues](https://img.shields.io/github/issues/itaditya/Code-Runner.svg)](https://github.com/itaditya/Code-Runner/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/itaditya/Code-Runner.svg)](https://github.com/itaditya/Code-Runner/pulls)
+
 ## Description
 
  Code Runner is an online portal where a user can code in various languages and get the output of the program. Compile time and Run time errors are also shown. User has the ability to add custom input also.
