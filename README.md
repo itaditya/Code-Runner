@@ -32,5 +32,9 @@
 
  1. Fork and clone the repo.
  2. In project directory, run `npm i`.
- 3. Now run `npm start` to start the server.
- 4. Run `npm run client` to start webpack build task.
+ 3. Go to [glot.io](https://glot.io/account/token), sign in and copy the auth token.
+ 4. On terminal run `echo GLOT_TOKEN='your-token' > .env`.
+ 5. Now run `npm start` to start the server.
+ 6. Run `npm run client` to start webpack build task.
+
+  Note - If you don't have webpack installed globally then run `npm i -g webpack`.
