@@ -12,6 +12,19 @@
       </div>
       <div class="col" id="result-col">
         <div class="container">
+          <div id="loader" class="contLoader">
+            <div class="dot dot-1"></div>
+            <div class="dot dot-2"></div>
+            <div class="dot dot-3"></div>
+          </div>
+          <svg style="position: absolute" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+              <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"/>
+              </filter>
+            </defs>
+          </svg>
           <div class="row" id="action-row">
             <select name="selectedLang" id="langSel">
               <option value="python">Python</option>
@@ -35,7 +48,7 @@
       </div>
     </div>
   </div>
-  
+
   <script src="dist/bundle.js"></script>
 </body>
 </html>
