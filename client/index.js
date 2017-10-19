@@ -10,11 +10,16 @@ const submitBtn = document.getElementById('submitBtn');
 const langSel = document.getElementById('langSel');
 const outputTxt = document.getElementById('outputTxt');
 const inputTxt = document.getElementById('inputTxt');
+const loader = document.getElementById('loader');
+
 let currentLang = 'python';
 
 const submitFn = function (event) {
   const sourceCode = editor.getValue();
   const input = inputTxt.value;
+
+  loader.style.display = 'block';
+
   fetch('/submit', {
     method: 'POST',
     headers: {
@@ -32,6 +37,11 @@ const submitFn = function (event) {
     }
     res.json().then(data => {
       let outputHtml = data.stdout;
+
+      if (outputHtml || data.stderr.length !== 0 ) {
+        loader.style.display = 'none';
+      }
+
       if(data.stderr.length !== 0){
         outputHtml = `Error \n${data.stderr}`;
       }
