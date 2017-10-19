@@ -1,4 +1,4 @@
-[![GitHub package version](https://img.shields.io/github/package-json/v/itaditya/Code-Runner.svg)](https://github.com/itaditya/Code-Runner) [![GitHub issues](https://img.shields.io/github/issues/itaditya/Code-Runner.svg)](https://github.com/itaditya/Code-Runner/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/itaditya/Code-Runner.svg)](https://github.com/itaditya/Code-Runner/pulls)
+[![GitHub package version](https://img.shields.io/github/package-json/v/itaditya/Code-Runner.svg?style=flat-square)](https://github.com/itaditya/Code-Runner) [![GitHub issues](https://img.shields.io/github/issues/itaditya/Code-Runner.svg?style=flat-square)](https://github.com/itaditya/Code-Runner/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/itaditya/Code-Runner.svg?style=flat-square)](https://github.com/itaditya/Code-Runner/pulls)
 
 ## Description
 
@@ -32,5 +32,7 @@
 
  1. Fork and clone the repo.
  2. In project directory, run `npm i`.
- 3. Now run `npm start` to start the server.
- 4. Run `npm run client` to start webpack build task.
+ 3. Go to [glot.io](https://glot.io/account/token), sign in and copy the auth token.
+ 4. On terminal run `echo GLOT_TOKEN='your-token' > .env`.
+ 5. Now run `npm start` to start the server.
+ 6. Run `npm run client` to start webpack build task.
