@@ -10,11 +10,13 @@ const submitBtn = document.getElementById('submitBtn');
 const langSel = document.getElementById('langSel');
 const outputTxt = document.getElementById('outputTxt');
 const inputTxt = document.getElementById('inputTxt');
+const loader = document.getElementById('loader');
 let currentLang = 'python';
 
 const submitFn = function (event) {
   const sourceCode = editor.getValue();
   const input = inputTxt.value;
+  toggleLoader('block');
   fetch('/submit', {
     method: 'POST',
     headers: {
@@ -26,6 +28,7 @@ const submitFn = function (event) {
       sourceCode
     })
   }).then(res => {
+    toggleLoader('none');
     if (res.status !== 200) {
       console.error('Couldn\'t connect to server');
       return;
@@ -62,6 +65,9 @@ const langSelFn = function(event) {
   selectLangFn(languages[event.target.selectedIndex]);
 }
 
+const toggleLoader = function(display) {
+  loader.style.display = display;
+}
+
 submitBtn.addEventListener('click', submitFn);
 langSel.addEventListener('change', langSelFn);
-

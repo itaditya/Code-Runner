@@ -81,6 +81,25 @@ body {
     color: #fff;
     padding: 10px 5px;
   }
+  #output-row {
+    position: relative;
+  }
+  #loader {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    margin: 0 0 -50px -50px;
+    border: 16px solid #ccc;
+    border-top: 16px solid $primary;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+  }
 }
 
-
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
