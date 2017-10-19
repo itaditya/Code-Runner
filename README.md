@@ -4,6 +4,8 @@
 
  Code Runner is an online portal where a user can code in various languages and get the output of the program. Compile time and Run time errors are also shown. User has the ability to add custom input also.
 
+![](https://i.imgur.com/8zOVrfH.gif)
+
 ## Future Implementations
 
  1. Code saving in LocalStorage
@@ -12,8 +14,7 @@
  4. Keyboard Control
  5. Refactor
  6. Code annotation and an open chat for particular code. (Useful for a user to help debug other's code)
-
-
+ 
 ## Currently Supported Languages
  1. Python
  2. Java
