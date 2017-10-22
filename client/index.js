@@ -3,14 +3,11 @@ import _ from "lodash";
 import style from "./index.scss";
 import languages from "./utilities/languages";
 import editor from "./utilities/aceSetup";
+import { Preloader } from "./utilities/preloader/preloader";
 
 editor.setValue(`print(input());`);
 
-/*Testing*/
-
-import { Preloader } from "./utilities/preloader/preloader";
 const outputLoader = new Preloader({}, "#outputPreloaderWrapper");
-/**/
 
 const submitBtn = document.getElementById("submitBtn");
 const langSel = document.getElementById("langSel");
@@ -23,6 +20,7 @@ const submitFn = function(event) {
   const input = inputTxt.value;
   inputTxt.disabled = true;
   submitBtn.disabled = true;
+  editor.setReadOnly(true);
   outputTxt.value = " ";
   outputLoader.showLoader();
   fetch("/submit", {
@@ -61,6 +59,7 @@ const submitFn = function(event) {
       inputTxt.disabled = false;
       submitBtn.disabled = false;
       outputLoader.hideLoader();
+      editor.setReadOnly(false);
     });
 };
 

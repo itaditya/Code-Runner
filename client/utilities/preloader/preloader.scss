@@ -6,6 +6,7 @@ $preloader-size: 20px;
     content: " ";
     display: none;
     position: absolute;
+    z-index: 4;
     // top: 50%;
     // left: 50%;
     bottom: 16px;

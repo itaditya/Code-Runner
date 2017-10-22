@@ -17,8 +17,10 @@
  
 ## Currently Supported Languages
  1. Python
- 2. Java
- 3. Javascript
+ 2. C
+ 3. C++
+ 4. Java
+ 5. Javascript
 
 ## How to Contribute
 

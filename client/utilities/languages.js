@@ -1,4 +1,4 @@
-export default ["python", "c", "java", "javascript"];
+export default ["python", "c", "cpp", "java", "javascript"];
 export const allLangs = [
   "assembly",
   "ats",

@@ -1,7 +1,21 @@
 const request = require("request");
 
 module.exports = {
-  submitCode: function(data, cb) {
+  getExt (language) {
+    const defaults = ['c', 'java', 'cpp'];
+    if(defaults.includes(language)){
+      return language;
+    }
+    let ext = '';
+    switch(language) {
+      case 'python': ext = 'py'; break;
+      case 'javascript': ext = 'js'; break;
+    }
+    return ext;
+  },
+  submitCode (data, cb) {
+    data.ext = this.getExt(data.language);
+    console.log(data.ext);
     request(
       {
         url: `https://run.glot.io/languages/${data.language}/latest/`,
@@ -15,7 +29,7 @@ module.exports = {
           stdin: data.input,
           files: [
             {
-              name: "main",
+              name: `main.${data.ext}`,
               content: data.sourceCode
             }
           ]
