@@ -4,8 +4,7 @@ import style from "./index.scss";
 import languages from "./utilities/languages";
 import editor from "./utilities/aceSetup";
 import { Preloader } from "./utilities/preloader/preloader";
-
-editor.setValue(`print(input());`);
+import codingTemplates from "./code_templates";
 
 const outputLoader = new Preloader({}, "#outputPreloaderWrapper");
 
@@ -14,6 +13,8 @@ const langSel = document.getElementById("langSel");
 const outputTxt = document.getElementById("outputTxt");
 const inputTxt = document.getElementById("inputTxt");
 let currentLang = "python";
+
+editor.setValue(codingTemplates[currentLang]);
 
 const submitFn = function(event) {
   const sourceCode = editor.getValue();
@@ -71,6 +72,7 @@ const selectLangFn = function(selectedLang) {
       aceLang = "c_cpp";
     }
     editor.getSession().setMode(`ace/mode/${aceLang}`);
+    editor.setValue(codingTemplates[currentLang]);
   }
 };
 

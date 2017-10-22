@@ -8,20 +8,23 @@ module.exports = {
     filename: path.join("client", "dist", "app.js")
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: "babel-loader",
-      query: {
-        presets: ["es2015"]
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        query: {
+          presets: ["es2015"]
+        }
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          use: ["css-loader", "sass-loader"]
+        })
       }
-    }, {
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      use: ExtractTextPlugin.extract({
-        use: ["css-loader", "sass-loader"]
-      })
-    }]
+    ]
   },
   resolve: {
     modules: [__dirname + "/node_modules"]
@@ -33,8 +36,8 @@ module.exports = {
       filename: path.join("client", "dist", "vendor.js"),
       minChunks(module, count) {
         var context = module.context;
-        return context && context.indexOf('node_modules') >= 0;
-      },
-    }),
+        return context && context.indexOf("node_modules") >= 0;
+      }
+    })
   ]
 };

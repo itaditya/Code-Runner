@@ -1,19 +1,23 @@
 const request = require("request");
 
 module.exports = {
-  getExt (language) {
-    const defaults = ['c', 'java', 'cpp'];
-    if(defaults.includes(language)){
+  getExt(language) {
+    const defaults = ["c", "java", "cpp"];
+    if (defaults.includes(language)) {
       return language;
     }
-    let ext = '';
-    switch(language) {
-      case 'python': ext = 'py'; break;
-      case 'javascript': ext = 'js'; break;
+    let ext = "";
+    switch (language) {
+      case "python":
+        ext = "py";
+        break;
+      case "javascript":
+        ext = "js";
+        break;
     }
     return ext;
   },
-  submitCode (data, cb) {
+  submitCode(data, cb) {
     data.ext = this.getExt(data.language);
     request(
       {
