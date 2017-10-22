@@ -6,11 +6,10 @@ import editor from "./utilities/aceSetup";
 
 editor.setValue(`print(input());`);
 
-
 /*Testing*/
 
-import { Preloader } from './utilities/preloader/preloader';
-const outputLoader = new Preloader({}, '#outputPreloaderWrapper');
+import { Preloader } from "./utilities/preloader/preloader";
+const outputLoader = new Preloader({}, "#outputPreloaderWrapper");
 /**/
 
 const submitBtn = document.getElementById("submitBtn");
@@ -55,7 +54,8 @@ const submitFn = function(event) {
     })
     .catch(err => {
       console.log("Some error occured again");
-    }).then(() => {
+    })
+    .then(() => {
       outputLoader.hideLoader();
     });
 };

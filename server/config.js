@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV === 'prod'){
+if (process.env.NODE_ENV === "prod") {
   return;
 }
-require('dotenv').config({path: '.env'})
+require("dotenv").config({ path: ".env" });

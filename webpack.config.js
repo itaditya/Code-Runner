@@ -7,25 +7,26 @@ module.exports = {
     filename: path.join("client", "dist", "bundle.js")
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: "babel-loader",
-      query: {
-        presets: ["es2015"]
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        query: {
+          presets: ["es2015"]
+        }
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          use: ["css-loader", "sass-loader"]
+        })
       }
-    }, {
-      test: /\.scss$/,
-      exclude: /node_modules/,
-      use: ExtractTextPlugin.extract({
-        use: ["css-loader", "sass-loader"]
-      })
-    }]
+    ]
   },
   resolve: {
     modules: [__dirname + "/node_modules"]
   },
-  plugins: [
-    new ExtractTextPlugin(path.join("client", "dist", "style.css")),
-  ]
+  plugins: [new ExtractTextPlugin(path.join("client", "dist", "style.css"))]
 };
