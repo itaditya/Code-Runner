@@ -9,7 +9,6 @@ module.exports = app => {
   });
 
   app.post("/submit", (req, res) => {
-    console.log(req.body);
     const data = _.pick(req.body, ["language", "input", "sourceCode"]);
     services.submitCode(data, body => {
       res.send(body);

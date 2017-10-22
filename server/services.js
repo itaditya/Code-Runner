@@ -15,7 +15,6 @@ module.exports = {
   },
   submitCode (data, cb) {
     data.ext = this.getExt(data.language);
-    console.log(data.ext);
     request(
       {
         url: `https://run.glot.io/languages/${data.language}/latest/`,
@@ -36,6 +35,7 @@ module.exports = {
         }
       },
       (error, response, body) => {
+        console.log(error);
         cb(body);
       }
     );
