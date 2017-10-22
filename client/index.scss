@@ -1,4 +1,4 @@
-$primary: #1A7B72;
+$primary: #34B3A0;
 $secondary: #002b36;
 $default: #01313f;
 
@@ -58,6 +58,12 @@ body {
         color: #fff;
         padding: 5px 20px;
         line-height: 21px;
+        &:hover, &:focus, &:active {
+          background: #46c9b6;
+        }
+        &[disabled] {
+          background: #1A7B72;
+        }
       }
     }
     #io-row {

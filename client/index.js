@@ -21,6 +21,8 @@ let currentLang = "python";
 const submitFn = function(event) {
   const sourceCode = editor.getValue();
   const input = inputTxt.value;
+  inputTxt.disabled = true;
+  submitBtn.disabled = true;
   outputTxt.value = " ";
   outputLoader.showLoader();
   fetch("/submit", {
@@ -56,6 +58,8 @@ const submitFn = function(event) {
       console.log("Some error occured again");
     })
     .then(() => {
+      inputTxt.disabled = false;
+      submitBtn.disabled = false;
       outputLoader.hideLoader();
     });
 };
