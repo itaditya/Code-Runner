@@ -15,7 +15,7 @@
         <div class="container">
           <div class="row" id="action-row">
             <select name="selectedLang" id="langSel">
-              <option value="python">Python</option>
+              <option value="python">Python 3</option>
               <option value="c">C</option>
               <option value="java">Java</option>
               <option value="js">Javascript</option>
@@ -25,7 +25,9 @@
           <div class="row" id="io-row">
             <div class="container" id="io-container">
               <div class="row" id="output-row">
-                <textarea name="" id="outputTxt" placeholder="Output will be displayed here"></textarea>
+                <div id="outputPreloaderWrapper">
+                  <textarea name="" id="outputTxt" placeholder="Output will be displayed here" disabled></textarea>
+                </div>
               </div>
               <div class="row" id="input-row">
                 <textarea name="" id="inputTxt" placeholder="Custom input can be entered here"></textarea>

@@ -1,0 +1,35 @@
+$preloader-size: 20px;
+
+.preloader-elem {
+  position: relative;
+  &:after {
+    content: " ";
+    display: none;
+    position: absolute;
+    // top: 50%;
+    // left: 50%;
+    bottom: 16px;
+    left: 10px;
+    height: $preloader-size;
+    width: $preloader-size;
+    // margin-top: -1 * $preloader-size / 2;
+    // margin-left: -1 * $preloader-size / 2;
+    animation: rotate 0.8s infinite linear;
+    border: 1px solid #fff;
+    border-right-color: transparent;
+    border-radius: 50%;
+  }
+  &.loading {
+    :first-child {
+      // visibility: hidden;
+    }
+    &:after {
+      display: block;
+    }
+  }
+}
+
+@keyframes rotate {
+  0%    { transform: rotate(0deg); }
+  100%  { transform: rotate(360deg); }
+}

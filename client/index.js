@@ -1,10 +1,17 @@
 import _ from "lodash";
 
 import style from "./index.scss";
-import languages from "./utilities/languages.js";
-import editor from "./utilities/aceSetup.js";
+import languages from "./utilities/languages";
+import editor from "./utilities/aceSetup";
 
 editor.setValue(`print(input());`);
+
+
+/*Testing*/
+
+import { Preloader } from './utilities/preloader/preloader';
+const outputLoader = new Preloader({}, '#outputPreloaderWrapper');
+/**/
 
 const submitBtn = document.getElementById("submitBtn");
 const langSel = document.getElementById("langSel");
@@ -15,6 +22,8 @@ let currentLang = "python";
 const submitFn = function(event) {
   const sourceCode = editor.getValue();
   const input = inputTxt.value;
+  outputTxt.value = " ";
+  outputLoader.showLoader();
   fetch("/submit", {
     method: "POST",
     headers: {
@@ -46,6 +55,8 @@ const submitFn = function(event) {
     })
     .catch(err => {
       console.log("Some error occured again");
+    }).then(() => {
+      outputLoader.hideLoader();
     });
 };
 
