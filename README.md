@@ -1,4 +1,9 @@
 [![GitHub package version](https://img.shields.io/github/package-json/v/itaditya/Code-Runner.svg?style=flat-square)](https://github.com/itaditya/Code-Runner) [![Dependencies](https://david-dm.org/itaditya/Code-Runner.svg?style=flat-square)](https://github.com/itaditya/Code-Runner/network/dependencies) [![GitHub issues](https://img.shields.io/github/issues/itaditya/Code-Runner.svg?style=flat-square)](https://github.com/itaditya/Code-Runner/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/itaditya/Code-Runner.svg?style=flat-square)](https://github.com/itaditya/Code-Runner/pulls) [![GitHub contributors](https://img.shields.io/github/contributors/itaditya/Code-Runner.svg?style=flat-square)](https://github.com/itaditya/Code-Runner/graphs/contributors) [![GitHub last commit](https://img.shields.io/github/last-commit/itaditya/Code-Runner.svg?style=flat-square)](https://github.com/itaditya/Code-Runner/commits/master) [![Heroku](http://heroku-badge.herokuapp.com/?app=codingrunner&style=flat)](codingrunner.herokuapp.com)
+
+
+<img src="https://raw.githubusercontent.com/fromdenisvieira/Code-Runner/master/code-runner-2.jpg"  width="250">
+
+
  
 ## Description
 
