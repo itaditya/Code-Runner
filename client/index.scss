@@ -91,4 +91,18 @@ body {
   }
 }
 
+#github-icon {
+  $size: 30px;
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  z-index: 4;
+  width: 43px;
+  text-align: center;
+  img {
+    height: $size;
+    width: $size;
+  }
+}
+
 
