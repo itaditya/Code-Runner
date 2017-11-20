@@ -1,4 +1,4 @@
-require("./config.js");
+require("./config");
 const express = require("express");
 const compression = require("compression");
 const morgan = require("morgan");
@@ -33,8 +33,10 @@ app.use((req, res, next) => {
   );
   next();
 });
+app.set("view engine", "ejs");
 
-require("./routes.js")(app);
+require("./db");
+require("./routes")(app);
 
 app.listen(port, () => {
   console.log(`Magic happens on http://localhost:${port}`);

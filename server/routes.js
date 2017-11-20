@@ -1,16 +1,34 @@
 const path = require("path");
-const _ = require("lodash");
+const _pick = require("lodash/pick");
 
 const services = require("./services");
 
 module.exports = app => {
   app.get("/", (req, res) => {
-    res.sendFile(path.resolve("client", "index.html"));
+    res.render("index", {
+      program: {}
+    });
+  });
+
+  app.get("/programs/:id", (req, res) => {
+    const { id } = req.params;
+    services.fetchCode(id, body => {
+      res.render("index", {
+        program: body
+      });
+    });
   });
 
   app.post("/submit", (req, res) => {
-    const data = _.pick(req.body, ["language", "input", "sourceCode"]);
+    const data = _pick(req.body, ["language", "input", "sourceCode"]);
     services.submitCode(data, body => {
+      res.send(body);
+    });
+  });
+
+  app.post("/save", (req, res) => {
+    const data = _pick(req.body, ["title", "language", "input", "sourceCode"]);
+    services.saveCode(data, body => {
       res.send(body);
     });
   });

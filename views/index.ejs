@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <title>Code Runner</title>
   <meta name="description" content="Code Runner is an online portal where a user can code in various languages and get the output of the program. Compile time and Run time errors are also shown. User has the ability to add custom input also.">
-  <link rel="stylesheet" href="dist/style.css">
+  <link rel="stylesheet" href="/dist/style.css">
 </head>
-<body>
+<body data-program='<%= JSON.stringify(program) %>'>
   <div class="wrapper loading">
     <div class="container" id="main-container">
       <div class="col" id="code-col">
@@ -20,9 +20,10 @@
               <option value="c">C</option>
               <option value="cpp">C ++</option>
               <option value="java">Java</option>
-              <option value="js">Javascript</option>
+              <option value="javascript">Javascript</option>
             </select>
             <button id="submitBtn">Run Code</button>
+            <button id="saveBtn">Save Code</button>
           </div>
           <div class="row" id="io-row">
             <div class="container" id="io-container">
@@ -45,7 +46,7 @@
       </a>
     </div>
   </div>
-  <script src="dist/vendor.js"></script>
-  <script src="dist/app.js"></script>
+  <script src="/dist/vendor.js"></script>
+  <script src="/dist/app.js"></script>
 </body>
 </html>

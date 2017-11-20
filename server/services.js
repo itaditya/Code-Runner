@@ -1,5 +1,7 @@
 const request = require("request");
 
+const Program = require("./models/Program");
+
 module.exports = {
   getExt(language) {
     const defaults = ["c", "java", "cpp"];
@@ -39,9 +41,23 @@ module.exports = {
         }
       },
       (error, response, body) => {
-        console.log(error);
         cb(body);
       }
     );
+  },
+  saveCode(data, cb) {
+    const program = new Program();
+    Object.assign(program, data);
+    program.save(err => {
+      if (err) {
+        console.log(err);
+      }
+      cb(program);
+    });
+  },
+  fetchCode(id, cb) {
+    Program.findById(id, "title language input sourceCode").then(data => {
+      cb(data);
+    });
   }
 };

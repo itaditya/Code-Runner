@@ -1,10 +1,7 @@
 import "./preloader.scss";
-export class Preloader {
+class Preloader {
   constructor(config, elem) {
     this.domElem = document.querySelector(elem);
-    this.init();
-  }
-  init() {
     this.domElem.classList.add("preloader-elem");
   }
   showLoader() {
@@ -14,3 +11,5 @@ export class Preloader {
     this.domElem.classList.remove("loading");
   }
 }
+
+export default Preloader;
