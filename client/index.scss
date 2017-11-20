@@ -48,22 +48,28 @@ body {
       #langSel {
         background: $secondary;
         color: #fff;
-        width: 60%;
+        width: 50%;
         padding: 3px 0 5px 0;
       }
-      #submitBtn {
-        background: $primary;
-        border: 1px solid $secondary;
+      button {
         outline: 0;
         color: #fff;
         padding: 5px 20px;
         line-height: 21px;
+      }
+      #submitBtn {
+        background: $primary;
+        border: 1px solid $secondary;
         &:hover, &:focus, &:active {
           background: #46c9b6;
         }
         &[disabled] {
           background: #1A7B72;
         }
+      }
+      #saveBtn {
+        background: transparent;
+        border: 1px solid #fff;
       }
     }
     #io-row {

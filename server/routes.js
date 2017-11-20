@@ -1,5 +1,6 @@
 const path = require("path");
 const _pick = require("lodash/pick");
+const isValidId = require("mongoose").Types.ObjectId.isValid;
 
 const services = require("./services");
 
@@ -12,6 +13,9 @@ module.exports = app => {
 
   app.get("/programs/:id", (req, res) => {
     const { id } = req.params;
+    if (!isValidId(id)) {
+      res.redirect("/");
+    }
     services.fetchCode(id, body => {
       if (!body) {
         res.redirect("/");
