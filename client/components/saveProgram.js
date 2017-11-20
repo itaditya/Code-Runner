@@ -63,8 +63,10 @@ const attachCallback = (eventType, callback) => {
 //Private Functions
 
 const _onClick = event => {
+  saveProgramElem.disabled = true;
   _triggerCallbacks("click");
   saveProgram(data => {
+    saveProgramElem.disabled = false;
     _triggerCallbacks("save", data);
   });
 };

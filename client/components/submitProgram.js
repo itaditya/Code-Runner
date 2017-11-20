@@ -62,9 +62,15 @@ const attachCallback = (eventType, callback) => {
 //Private Functions
 
 const _onClick = event => {
+  submitProgramElem.disabled = true;
   _triggerCallbacks("click");
-  submitProgram(data => {
-    _triggerCallbacks("output", data.stdout);
+  submitProgram(({ stderr, stdout }) => {
+    let output = stdout;
+    if (stderr.length !== 0) {
+      output = `Error \n${stderr}`;
+    }
+    submitProgramElem.disabled = false;
+    _triggerCallbacks("output", output);
   });
 };
 

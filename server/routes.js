@@ -13,6 +13,9 @@ module.exports = app => {
   app.get("/programs/:id", (req, res) => {
     const { id } = req.params;
     services.fetchCode(id, body => {
+      if (!body) {
+        res.redirect("/");
+      }
       res.render("index", {
         program: body
       });

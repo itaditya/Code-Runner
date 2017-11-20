@@ -48,6 +48,9 @@ SubmitProgramComp.attachCallback("click", () => {
 
   const input = InputFieldComp.getInputFn();
   SubmitProgramComp.watchInput(input);
+
+  OutputFieldComp.setOutputFn(" ");
+  outputLoader.showLoader();
 });
 
 SaveProgramComp.attachCallback("click", () => {
@@ -59,11 +62,10 @@ SaveProgramComp.attachCallback("click", () => {
 });
 
 SubmitProgramComp.attachCallback("output", output => {
-  console.log(output);
   OutputFieldComp.setOutputFn(output);
+  outputLoader.hideLoader();
 });
 
 SaveProgramComp.attachCallback("save", data => {
   window.open(`/programs/${data._id}`, "_blank");
-  console.log(data);
 });
