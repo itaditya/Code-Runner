@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js --ignore client",
-    "client": "webpack --progress --watch",
+    "client": "webpack --progress --watch --env=development",
     "build": "webpack -p",
     "format": "prettier --write \"**/*.js\"",
     "deploy": "git push heroku master",
