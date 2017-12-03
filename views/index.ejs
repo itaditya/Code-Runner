@@ -14,7 +14,7 @@
       </div>
       <div class="col" id="result-col">
         <div class="container">
-          <div class="row" id="action-row">
+          <div class="row" id="langSel-row">
             <select name="selectedLang" id="langSel">
               <option value="python">Python 3</option>
               <option value="c">C</option>
@@ -22,8 +22,6 @@
               <option value="java">Java</option>
               <option value="javascript">Javascript</option>
             </select>
-            <button id="submitBtn">Run Code</button>
-            <button id="saveBtn">Save Code</button>
           </div>
           <div class="row" id="io-row">
             <div class="container" id="io-container">
@@ -37,13 +35,49 @@
               </div>
             </div>
           </div>
+          <div class="row" id="action-row">
+            <button id="submitBtn">Run Code</button>
+            <button id="saveBtn">Save Code with Sharable Link</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="github-icon">
-      <a href="https://github.com/itaditya/Code-Runner">
-        <img src="/assets/github.png">
-      </a>
+      <div class="col" id="sidebar-col">
+        <div class="sidebar-icon" id="logo-icon" style="display: none;">
+          <a href="https://codingrunner.herokuapp.com/">
+            <img src="/assets/logo-icon.png">
+          </a>
+        </div>
+        <div class="sidebar-icon active">
+          <a href="#tab-1">
+            <img src="/assets/github.png">
+          </a>
+        </div>
+        <div class="sidebar-icon">
+          <a href="#tab-1">
+            <img src="/assets/github.png">
+          </a>
+        </div>
+        <div class="sidebar-icon">
+          <a href="#tab-1">
+            <img src="/assets/github.png">
+          </a>
+        </div>
+        <div class="sidebar-icon">
+          <a href="#tab-1">
+            <img src="/assets/github.png">
+          </a>
+        </div>
+        <div class="sidebar-icon">
+          <a href="#tab-1">
+            <img src="/assets/github.png">
+          </a>
+        </div>
+        <div class="sidebar-icon" id="github-icon">
+          <a href="https://github.com/itaditya/Code-Runner">
+            <img src="/assets/github.png">
+          </a>
+        </div>
+      </div>
     </div>
   </div>
   <script src="/dist/vendor.js"></script>
