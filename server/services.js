@@ -1,20 +1,20 @@
-const request = require("request");
+const request = require('request');
 
-const Program = require("./models/Program");
+const Program = require('./models/Program');
 
 module.exports = {
   getExt(language) {
-    const defaults = ["c", "java", "cpp"];
+    const defaults = ['c', 'java', 'cpp'];
     if (defaults.includes(language)) {
       return language;
     }
-    let ext = "";
+    let ext = '';
     switch (language) {
-      case "python":
-        ext = "py";
+      case 'python':
+        ext = 'py';
         break;
-      case "javascript":
-        ext = "js";
+      case 'javascript':
+        ext = 'js';
         break;
     }
     return ext;
@@ -24,11 +24,11 @@ module.exports = {
     request(
       {
         url: `https://run.glot.io/languages/${data.language}/latest/`,
-        method: "POST",
+        method: 'POST',
         json: true,
         headers: {
           Authorization: `Token ${process.env.GLOT_TOKEN}`,
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
         json: {
           stdin: data.input,
@@ -56,7 +56,7 @@ module.exports = {
     });
   },
   fetchCode(id, cb) {
-    Program.findById(id, "title language input sourceCode").then(data => {
+    Program.findById(id, 'title language input sourceCode').then(data => {
       cb(data);
     });
   }

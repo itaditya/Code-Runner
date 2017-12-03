@@ -1,4 +1,4 @@
-import { dispatchEvent } from "../utilities/eventBus";
+import { dispatchEvent } from '../utilities/eventBus';
 
 //Define Variables
 let inputFieldElem, currentLang;
@@ -11,13 +11,13 @@ const getInputFn = () => {
 
 const setInputFn = input => {
   inputFieldElem.value = input;
-  dispatchEvent("inputField:change", input);
+  dispatchEvent('inputField:change', input);
 };
 
 //init
 (() => {
   //DOM binding
-  inputFieldElem = document.getElementById("inputTxt");
+  inputFieldElem = document.getElementById('inputTxt');
 })();
 
 //Expose Component

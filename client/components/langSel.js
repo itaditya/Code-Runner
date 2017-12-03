@@ -1,5 +1,5 @@
-import languages from "../utilities/languages";
-import { dispatchEvent } from "../utilities/eventBus";
+import languages from '../utilities/languages';
+import { dispatchEvent } from '../utilities/eventBus';
 
 //Define Variables
 let langSelElem, currentLang;
@@ -9,7 +9,7 @@ const selectLangFn = selectedLang => {
   if (languages.includes(selectedLang)) {
     currentLang = selectedLang;
     langSelElem.value = selectedLang;
-    dispatchEvent("langSel:change", currentLang);
+    dispatchEvent('langSel:change', currentLang);
   }
 };
 
@@ -26,12 +26,12 @@ const _onChange = event => {
 //init
 (() => {
   //DOM binding
-  langSelElem = document.getElementById("langSel");
+  langSelElem = document.getElementById('langSel');
 
   //Event Bindings
-  langSelElem.addEventListener("change", _onChange);
+  langSelElem.addEventListener('change', _onChange);
 
-  currentLang = "python";
+  currentLang = 'python';
   selectLangFn(currentLang);
 })();
 

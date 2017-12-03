@@ -17,6 +17,9 @@
     "heroku-postbuild": "npm run build",
     "precommit": "npm run format"
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "keywords": [],
   "author": "Aditya Agarwal <adityaa803@gmail.com> (http://adi.surge.sh/)",
   "license": "ISC",

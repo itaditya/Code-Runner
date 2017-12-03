@@ -1,4 +1,4 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 var programSchema = new Schema(
   {
@@ -13,7 +13,7 @@ var programSchema = new Schema(
     },
     language: {
       type: String,
-      enum: ["python", "c", "cpp", "java", "javascript"]
+      enum: ['python', 'c', 'cpp', 'java', 'javascript']
     }
   },
   {
@@ -21,4 +21,4 @@ var programSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("Program", programSchema);
+module.exports = mongoose.model('Program', programSchema);

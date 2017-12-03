@@ -1,7 +1,7 @@
-import InputFieldComp from "./inputField";
-import CodeEditorComp from "./codeEditor";
+import InputFieldComp from './inputField';
+import CodeEditorComp from './codeEditor';
 
-import { addEvent, dispatchEvent } from "../utilities/eventBus";
+import { addEvent, dispatchEvent } from '../utilities/eventBus';
 
 //Define Variables
 let submitProgramElem, language, input, sourceCode;
@@ -15,10 +15,10 @@ const submitProgram = async function() {
     sourceCode
   });
   try {
-    const res = await fetch("/submit", {
-      method: "POST",
+    const res = await fetch('/submit', {
+      method: 'POST',
       headers: {
-        "Content-type": "application/json"
+        'Content-type': 'application/json'
       },
       body
     });
@@ -32,7 +32,7 @@ const submitProgram = async function() {
   }
 };
 
-addEvent("langSel:change", currentLang => {
+addEvent('langSel:change', currentLang => {
   language = currentLang;
 });
 
@@ -42,23 +42,23 @@ const _onClick = async function(event) {
   submitProgramElem.disabled = true;
   input = InputFieldComp.getInputFn();
   sourceCode = CodeEditorComp.getSourceCodeFn();
-  dispatchEvent("submitProgram:click");
+  dispatchEvent('submitProgram:click');
   const { stderr, stdout } = await submitProgram();
   let output = stdout;
   if (stderr.length !== 0) {
     output = `Error \n${stderr}`;
   }
   submitProgramElem.disabled = false;
-  dispatchEvent("submitProgram:output", output);
+  dispatchEvent('submitProgram:output', output);
 };
 
 //init
 (() => {
   //DOM binding
-  submitProgramElem = document.getElementById("submitBtn");
+  submitProgramElem = document.getElementById('submitBtn');
 
   //Event Bindings
-  submitProgramElem.addEventListener("click", _onClick);
+  submitProgramElem.addEventListener('click', _onClick);
 })();
 
 //Expose Component

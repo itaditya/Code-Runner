@@ -1,4 +1,4 @@
-import { dispatchEvent } from "../utilities/eventBus";
+import { dispatchEvent } from '../utilities/eventBus';
 
 //Define Variables
 let outputFieldElem, currentLang;
@@ -6,13 +6,13 @@ let outputFieldElem, currentLang;
 //Public Methods
 const setOutputFn = output => {
   outputFieldElem.value = output;
-  dispatchEvent("outputField:change", output);
+  dispatchEvent('outputField:change', output);
 };
 
 //init
 (() => {
   //DOM binding
-  outputFieldElem = document.getElementById("outputTxt");
+  outputFieldElem = document.getElementById('outputTxt');
 })();
 
 //Expose Component

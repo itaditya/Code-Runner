@@ -1,7 +1,7 @@
-import InputFieldComp from "./inputField";
-import CodeEditorComp from "./codeEditor";
+import InputFieldComp from './inputField';
+import CodeEditorComp from './codeEditor';
 
-import { addEvent, dispatchEvent } from "../utilities/eventBus";
+import { addEvent, dispatchEvent } from '../utilities/eventBus';
 
 //Define Variables
 let saveProgramElem, language, input, sourceCode;
@@ -10,16 +10,16 @@ let saveProgramElem, language, input, sourceCode;
 
 const saveProgram = async function(cb) {
   const body = JSON.stringify({
-    title: "hi",
+    title: 'hi',
     language,
     input,
     sourceCode
   });
   try {
-    const res = await fetch("/save", {
-      method: "POST",
+    const res = await fetch('/save', {
+      method: 'POST',
       headers: {
-        "Content-type": "application/json"
+        'Content-type': 'application/json'
       },
       body
     });
@@ -33,7 +33,7 @@ const saveProgram = async function(cb) {
   }
 };
 
-addEvent("langSel:change", currentLang => {
+addEvent('langSel:change', currentLang => {
   language = currentLang;
 });
 
@@ -43,19 +43,19 @@ const _onClick = async function(event) {
   saveProgramElem.disabled = true;
   input = InputFieldComp.getInputFn();
   sourceCode = CodeEditorComp.getSourceCodeFn();
-  dispatchEvent("saveProgram:click");
+  dispatchEvent('saveProgram:click');
   const programData = await saveProgram();
   saveProgramElem.disabled = false;
-  dispatchEvent("saveProgram:save", programData);
+  dispatchEvent('saveProgram:save', programData);
 };
 
 //init
 (() => {
   //DOM binding
-  saveProgramElem = document.getElementById("saveBtn");
+  saveProgramElem = document.getElementById('saveBtn');
 
   //Event Bindings
-  saveProgramElem.addEventListener("click", _onClick);
+  saveProgramElem.addEventListener('click', _onClick);
 })();
 
 //Expose Component
