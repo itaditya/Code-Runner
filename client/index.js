@@ -4,6 +4,7 @@ import codingTemplates from "./code_templates";
 import style from "./index.scss";
 
 import languages from "./utilities/languages";
+import { addEvent, dispatchEvent } from "./utilities/eventBus";
 import Preloader from "./utilities/preloader/preloader";
 
 import LangSelComp from "./components/langSel";
@@ -19,53 +20,34 @@ const savedProgram = JSON.parse(document.body.dataset.program);
 console.log(savedProgram);
 
 const onLanguageChange = currentLang => {
-  SubmitProgramComp.watchCurrentLang(currentLang);
-  SaveProgramComp.watchCurrentLang(currentLang);
   CodeEditorComp.setLang(currentLang);
   CodeEditorComp.setSourceCodeFn(codingTemplates[currentLang]);
 };
 
-if (savedProgram.title) {
-  const { language, sourceCode, input } = savedProgram;
-  SubmitProgramComp.watchCurrentLang(language);
-  SaveProgramComp.watchCurrentLang(language);
-  CodeEditorComp.setLang(language);
-  CodeEditorComp.setSourceCodeFn(sourceCode);
-  LangSelComp.selectLangFn(language);
-  InputFieldComp.setInputFn(input);
-} else {
-  onLanguageChange("python");
-}
-
-LangSelComp.attachCallback("change", () => {
-  const currentLang = LangSelComp.getSelectedLangFn();
+addEvent("langSel:change", currentLang => {
   onLanguageChange(currentLang);
 });
 
-SubmitProgramComp.attachCallback("click", () => {
-  const sourceCode = CodeEditorComp.getSourceCodeFn();
-  SubmitProgramComp.watchSourceCode(sourceCode);
+if (savedProgram.title) {
+  const { language, sourceCode, input } = savedProgram;
+  LangSelComp.selectLangFn(language);
+  InputFieldComp.setInputFn(input);
+  CodeEditorComp.setLang(language);
+  CodeEditorComp.setSourceCodeFn(sourceCode);
+} else {
+  dispatchEvent("langSel:change", "python");
+}
 
-  const input = InputFieldComp.getInputFn();
-  SubmitProgramComp.watchInput(input);
-
+addEvent("submitProgram:click", () => {
   OutputFieldComp.setOutputFn(" ");
   outputLoader.showLoader();
 });
 
-SaveProgramComp.attachCallback("click", () => {
-  const sourceCode = CodeEditorComp.getSourceCodeFn();
-  SaveProgramComp.watchSourceCode(sourceCode);
-
-  const input = InputFieldComp.getInputFn();
-  SaveProgramComp.watchInput(input);
-});
-
-SubmitProgramComp.attachCallback("output", output => {
+addEvent("submitProgram:output", output => {
   OutputFieldComp.setOutputFn(output);
   outputLoader.hideLoader();
 });
 
-SaveProgramComp.attachCallback("save", data => {
+addEvent("saveProgram:save", data => {
   window.open(`/programs/${data._id}`, "_blank");
 });

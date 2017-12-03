@@ -1,4 +1,5 @@
 import languages from "../utilities/languages";
+import { dispatchEvent } from "../utilities/eventBus";
 
 import ace from "brace";
 import "brace/mode/python";
@@ -8,9 +9,7 @@ import "brace/mode/javascript";
 import "brace/theme/solarized_dark";
 
 //Define Variables
-let editor,
-  currentLang,
-  callbacksToTrigger = {};
+let editor, currentLang;
 
 //Public Methods
 
@@ -24,30 +23,16 @@ const getSourceCodeFn = () => {
 };
 
 const setLang = lang => {
-  if (lang === "c") {
+  if (lang === "c" || lang === "cpp") {
     lang = "c_cpp";
   }
   editor.getSession().setMode(`ace/mode/${lang}`);
 };
 
-const attachCallback = (eventType, callback) => {
-  callbacksToTrigger[eventType].push(callback);
-};
-
 //Private Functions
 
 const _onChange = event => {
-  _triggerCallbacks("change");
-};
-
-const _triggerCallbacks = (eventType, data) => {
-  if (Object.keys(callbacksToTrigger).length === 0) {
-    return;
-  }
-  const callbacks = callbacksToTrigger[eventType];
-  for (let i = 0, l = callbacks.length; i < l; i++) {
-    callbacks[i](data);
-  }
+  dispatchEvent("codeEditor:change");
 };
 
 //init
@@ -65,8 +50,7 @@ const _triggerCallbacks = (eventType, data) => {
 const CodeEditorComp = {
   setSourceCodeFn,
   getSourceCodeFn,
-  setLang,
-  attachCallback
+  setLang
 };
 
 export default CodeEditorComp;

@@ -1,9 +1,10 @@
+import InputFieldComp from "./inputField";
+import CodeEditorComp from "./codeEditor";
+
+import { addEvent, dispatchEvent } from "../utilities/eventBus";
+
 //Define Variables
-let submitProgramElem,
-  language,
-  input,
-  sourceCode,
-  callbacksToTrigger = {};
+let submitProgramElem, language, input, sourceCode;
 
 //Public Methods
 
@@ -31,57 +32,34 @@ const submitProgram = cb => {
           cb(data);
         })
         .catch(err => {
-          console.log(err);
+          console.log("b", err);
         });
     })
     .catch(err => {
-      console.log(err);
+      console.log("a", err);
     })
     .then(() => {});
 };
 
-const watchCurrentLang = lang => {
-  language = lang;
-};
-
-const watchSourceCode = code => {
-  sourceCode = code;
-};
-
-const watchInput = inputData => {
-  input = inputData;
-};
-
-const attachCallback = (eventType, callback) => {
-  if (!callbacksToTrigger[eventType]) {
-    callbacksToTrigger[eventType] = [];
-  }
-  callbacksToTrigger[eventType].push(callback);
-};
+addEvent("langSel:change", currentLang => {
+  language = currentLang;
+});
 
 //Private Functions
 
 const _onClick = event => {
   submitProgramElem.disabled = true;
-  _triggerCallbacks("click");
+  input = InputFieldComp.getInputFn();
+  sourceCode = CodeEditorComp.getSourceCodeFn();
+  dispatchEvent("submitProgram:click");
   submitProgram(({ stderr, stdout }) => {
     let output = stdout;
     if (stderr.length !== 0) {
       output = `Error \n${stderr}`;
     }
     submitProgramElem.disabled = false;
-    _triggerCallbacks("output", output);
+    dispatchEvent("submitProgram:output", output);
   });
-};
-
-const _triggerCallbacks = (eventType, data) => {
-  if (Object.keys(callbacksToTrigger).length === 0) {
-    return;
-  }
-  const callbacks = callbacksToTrigger[eventType];
-  for (let i = 0, l = callbacks.length; i < l; i++) {
-    callbacks[i](data);
-  }
 };
 
 //init
@@ -95,11 +73,7 @@ const _triggerCallbacks = (eventType, data) => {
 
 //Expose Component
 const SubmitProgramComp = {
-  submitProgram,
-  watchCurrentLang,
-  watchSourceCode,
-  watchInput,
-  attachCallback
+  submitProgram
 };
 
 export default SubmitProgramComp;

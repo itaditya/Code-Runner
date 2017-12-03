@@ -1,9 +1,10 @@
+import InputFieldComp from "./inputField";
+import CodeEditorComp from "./codeEditor";
+
+import { addEvent, dispatchEvent } from "../utilities/eventBus";
+
 //Define Variables
-let saveProgramElem,
-  language,
-  input,
-  sourceCode,
-  callbacksToTrigger = {};
+let saveProgramElem, language, input, sourceCode;
 
 //Public Methods
 
@@ -41,44 +42,21 @@ const saveProgram = cb => {
     .then(() => {});
 };
 
-const watchCurrentLang = lang => {
-  language = lang;
-};
-
-const watchSourceCode = code => {
-  sourceCode = code;
-};
-
-const watchInput = inputData => {
-  input = inputData;
-};
-
-const attachCallback = (eventType, callback) => {
-  if (!callbacksToTrigger[eventType]) {
-    callbacksToTrigger[eventType] = [];
-  }
-  callbacksToTrigger[eventType].push(callback);
-};
+addEvent("langSel:change", currentLang => {
+  language = currentLang;
+});
 
 //Private Functions
 
 const _onClick = event => {
   saveProgramElem.disabled = true;
-  _triggerCallbacks("click");
+  input = InputFieldComp.getInputFn();
+  sourceCode = CodeEditorComp.getSourceCodeFn();
+  dispatchEvent("saveProgram:click");
   saveProgram(data => {
     saveProgramElem.disabled = false;
-    _triggerCallbacks("save", data);
+    dispatchEvent("saveProgram:save", data);
   });
-};
-
-const _triggerCallbacks = (eventType, data) => {
-  if (Object.keys(callbacksToTrigger).length === 0) {
-    return;
-  }
-  const callbacks = callbacksToTrigger[eventType];
-  for (let i = 0, l = callbacks.length; i < l; i++) {
-    callbacks[i](data);
-  }
 };
 
 //init
@@ -92,11 +70,7 @@ const _triggerCallbacks = (eventType, data) => {
 
 //Expose Component
 const SaveProgramComp = {
-  saveProgram,
-  watchCurrentLang,
-  watchSourceCode,
-  watchInput,
-  attachCallback
+  saveProgram
 };
 
 export default SaveProgramComp;

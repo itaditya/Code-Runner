@@ -1,15 +1,15 @@
 import languages from "../utilities/languages";
+import { dispatchEvent } from "../utilities/eventBus";
 
 //Define Variables
-let langSelElem,
-  currentLang,
-  callbacksToTrigger = {};
+let langSelElem, currentLang;
 
 //Public Methods
 const selectLangFn = selectedLang => {
   if (languages.includes(selectedLang)) {
     currentLang = selectedLang;
     langSelElem.value = selectedLang;
+    dispatchEvent("langSel:change", currentLang);
   }
 };
 
@@ -17,26 +17,10 @@ const getSelectedLangFn = () => {
   return currentLang;
 };
 
-const attachCallback = (eventType, callback) => {
-  if (!callbacksToTrigger[eventType]) {
-    callbacksToTrigger[eventType] = [];
-  }
-  callbacksToTrigger[eventType].push(callback);
-};
-
 //Private Functions
 
 const _onChange = event => {
-  console.log("test");
   selectLangFn(languages[event.target.selectedIndex]);
-  _triggerCallbacks("change");
-};
-
-const _triggerCallbacks = eventType => {
-  const callbacks = callbacksToTrigger[eventType];
-  for (let i = 0, l = callbacks.length; i < l; i++) {
-    callbacks[i]();
-  }
 };
 
 //init
@@ -54,8 +38,7 @@ const _triggerCallbacks = eventType => {
 //Expose Component
 const LangSelComp = {
   selectLangFn,
-  getSelectedLangFn,
-  attachCallback
+  getSelectedLangFn
 };
 
 export default LangSelComp;
