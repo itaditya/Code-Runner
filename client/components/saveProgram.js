@@ -8,7 +8,7 @@ let saveProgramElem, language, input, sourceCode;
 
 //Public Methods
 
-const saveProgram = async function(cb) {
+async function saveProgram() {
   const body = JSON.stringify({
     title: 'hi',
     language,
@@ -31,7 +31,7 @@ const saveProgram = async function(cb) {
   } catch (err) {
     console.error(err);
   }
-};
+}
 
 addEvent('langSel:change', currentLang => {
   language = currentLang;
@@ -39,7 +39,7 @@ addEvent('langSel:change', currentLang => {
 
 //Private Functions
 
-const _onClick = async function(event) {
+async function _onClick(event) {
   saveProgramElem.disabled = true;
   input = InputFieldComp.getInputFn();
   sourceCode = CodeEditorComp.getSourceCodeFn();
@@ -47,7 +47,7 @@ const _onClick = async function(event) {
   const programData = await saveProgram();
   saveProgramElem.disabled = false;
   dispatchEvent('saveProgram:save', programData);
-};
+}
 
 //init
 (() => {

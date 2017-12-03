@@ -8,7 +8,7 @@ let submitProgramElem, language, input, sourceCode;
 
 //Public Methods
 
-const submitProgram = async function() {
+async function submitProgram() {
   const body = JSON.stringify({
     language,
     input,
@@ -30,7 +30,7 @@ const submitProgram = async function() {
   } catch (err) {
     console.error(err);
   }
-};
+}
 
 addEvent('langSel:change', currentLang => {
   language = currentLang;
@@ -38,7 +38,7 @@ addEvent('langSel:change', currentLang => {
 
 //Private Functions
 
-const _onClick = async function(event) {
+async function _onClick(event) {
   submitProgramElem.disabled = true;
   input = InputFieldComp.getInputFn();
   sourceCode = CodeEditorComp.getSourceCodeFn();
@@ -50,7 +50,7 @@ const _onClick = async function(event) {
   }
   submitProgramElem.disabled = false;
   dispatchEvent('submitProgram:output', output);
-};
+}
 
 //init
 (() => {
