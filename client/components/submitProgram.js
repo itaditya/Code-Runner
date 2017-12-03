@@ -8,37 +8,28 @@ let submitProgramElem, language, input, sourceCode;
 
 //Public Methods
 
-const submitProgram = cb => {
+const submitProgram = async function() {
   const body = JSON.stringify({
     language,
     input,
     sourceCode
   });
-  fetch("/submit", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json"
-    },
-    body
-  })
-    .then(res => {
-      if (res.status !== 200) {
-        console.error("Couldn't connect to server");
-        return;
-      }
-      res
-        .json()
-        .then(data => {
-          cb(data);
-        })
-        .catch(err => {
-          console.log("b", err);
-        });
-    })
-    .catch(err => {
-      console.log("a", err);
-    })
-    .then(() => {});
+  try {
+    const res = await fetch("/submit", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body
+    });
+    if (res.status !== 200) {
+      console.error("Couldn't connect to server");
+      return;
+    }
+    return res.json();
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 addEvent("langSel:change", currentLang => {
@@ -47,19 +38,18 @@ addEvent("langSel:change", currentLang => {
 
 //Private Functions
 
-const _onClick = event => {
+const _onClick = async function(event) {
   submitProgramElem.disabled = true;
   input = InputFieldComp.getInputFn();
   sourceCode = CodeEditorComp.getSourceCodeFn();
   dispatchEvent("submitProgram:click");
-  submitProgram(({ stderr, stdout }) => {
-    let output = stdout;
-    if (stderr.length !== 0) {
-      output = `Error \n${stderr}`;
-    }
-    submitProgramElem.disabled = false;
-    dispatchEvent("submitProgram:output", output);
-  });
+  const { stderr, stdout } = await submitProgram();
+  let output = stdout;
+  if (stderr.length !== 0) {
+    output = `Error \n${stderr}`;
+  }
+  submitProgramElem.disabled = false;
+  dispatchEvent("submitProgram:output", output);
 };
 
 //init

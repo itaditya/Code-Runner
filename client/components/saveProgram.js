@@ -8,38 +8,29 @@ let saveProgramElem, language, input, sourceCode;
 
 //Public Methods
 
-const saveProgram = cb => {
+const saveProgram = async function(cb) {
   const body = JSON.stringify({
     title: "hi",
     language,
     input,
     sourceCode
   });
-  fetch("/save", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json"
-    },
-    body
-  })
-    .then(res => {
-      if (res.status !== 200) {
-        console.error("Couldn't connect to server");
-        return;
-      }
-      res
-        .json()
-        .then(data => {
-          cb(data);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    })
-    .catch(err => {
-      console.log(err);
-    })
-    .then(() => {});
+  try {
+    const res = await fetch("/save", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body
+    });
+    if (res.status !== 200) {
+      console.error("Couldn't connect to server");
+      return;
+    }
+    return res.json();
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 addEvent("langSel:change", currentLang => {
@@ -48,15 +39,14 @@ addEvent("langSel:change", currentLang => {
 
 //Private Functions
 
-const _onClick = event => {
+const _onClick = async function(event) {
   saveProgramElem.disabled = true;
   input = InputFieldComp.getInputFn();
   sourceCode = CodeEditorComp.getSourceCodeFn();
   dispatchEvent("saveProgram:click");
-  saveProgram(data => {
-    saveProgramElem.disabled = false;
-    dispatchEvent("saveProgram:save", data);
-  });
+  const programData = await saveProgram();
+  saveProgramElem.disabled = false;
+  dispatchEvent("saveProgram:save", programData);
 };
 
 //init
