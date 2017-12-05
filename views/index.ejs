@@ -1,86 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Code Runner</title>
-  <meta name="description" content="Code Runner is an online portal where a user can code in various languages and get the output of the program. Compile time and Run time errors are also shown. User has the ability to add custom input also.">
-  <link rel="stylesheet" href="/dist/style.css">
-</head>
-<body data-program='<%= JSON.stringify(program) %>'>
-  <div class="wrapper loading">
-    <div class="container" id="main-container">
-      <div class="col" id="code-col">
-        <div id="editor"></div>
-      </div>
-      <div class="col" id="result-col">
-        <div class="container">
-          <div class="row" id="langSel-row">
-            <select name="selectedLang" id="langSel">
-              <option value="python">Python 3</option>
-              <option value="c">C</option>
-              <option value="cpp">C ++</option>
-              <option value="java">Java</option>
-              <option value="javascript">Javascript</option>
-            </select>
-          </div>
-          <div class="row" id="io-row">
-            <div class="container" id="io-container">
-              <div class="row" id="output-row">
-                <div id="outputPreloaderWrapper">
-                  <textarea name="" id="outputTxt" placeholder="Output will be displayed here" disabled></textarea>
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Code Runner</title>
+    <meta name="description" content="Code Runner is an online portal where a user can code in various languages and get the output of the program. Compile time and Run time errors are also shown. User has the ability to add custom input also."/>
+    <link rel="stylesheet" href="/dist/style.css"/>
+  </head>
+  <body data-program=' <%= JSON.stringify(program) %>
+    '>
+    <div class="wrapper loading">
+      <div class="container" id="main-container">
+        <div class="col" id="code-col">
+          <div id="editor"></div>
+        </div>
+        <div class="col" id="result-col">
+          <div class="container">
+            <div class="row" id="langSel-row">
+              <select name="selectedLang" id="langSel">
+                <option value="python">Python 3</option>
+                <option value="c">C</option>
+                <option value="cpp">C ++</option>
+                <option value="java">Java</option>
+                <option value="javascript">Javascript</option>
+              </select>
+            </div>
+            <div class="row" id="io-row">
+              <div class="container" id="io-container">
+                <div class="row" id="output-row">
+                  <div id="outputPreloaderWrapper">
+                    <textarea name="" id="outputTxt" placeholder="Output will be displayed here" disabled></textarea>
+                  </div>
+                </div>
+                <div class="row" id="input-row">
+                  <textarea name="" id="inputTxt" placeholder="Custom input can be entered here"></textarea>
                 </div>
               </div>
-              <div class="row" id="input-row">
-                <textarea name="" id="inputTxt" placeholder="Custom input can be entered here"></textarea>
-              </div>
+            </div>
+            <div class="row" id="action-row">
+              <button id="submitBtn">Run Code</button>
+              <button id="saveBtn">Save Code with Sharable Link</button>
             </div>
           </div>
-          <div class="row" id="action-row">
-            <button id="submitBtn">Run Code</button>
-            <button id="saveBtn">Save Code with Sharable Link</button>
+        </div>
+        <div class="col" id="sidebar-col">
+          <div class="sidebar-icon" id="logo-icon" style="display: none;">
+            <a href="https://codingrunner.herokuapp.com/">
+              <img src="/assets/logo-icon.png"/>
+            </a>
           </div>
-        </div>
-      </div>
-      <div class="col" id="sidebar-col">
-        <div class="sidebar-icon" id="logo-icon" style="display: none;">
-          <a href="https://codingrunner.herokuapp.com/">
-            <img src="/assets/logo-icon.png">
-          </a>
-        </div>
-        <div class="sidebar-icon active">
-          <a href="#tab-1">
-            <img src="/assets/github.png">
-          </a>
-        </div>
-        <div class="sidebar-icon">
-          <a href="#tab-1">
-            <img src="/assets/github.png">
-          </a>
-        </div>
-        <div class="sidebar-icon">
-          <a href="#tab-1">
-            <img src="/assets/github.png">
-          </a>
-        </div>
-        <div class="sidebar-icon">
-          <a href="#tab-1">
-            <img src="/assets/github.png">
-          </a>
-        </div>
-        <div class="sidebar-icon">
-          <a href="#tab-1">
-            <img src="/assets/github.png">
-          </a>
-        </div>
-        <div class="sidebar-icon" id="github-icon">
-          <a href="https://github.com/itaditya/Code-Runner">
-            <img src="/assets/github.png">
-          </a>
+          <div class="sidebar-icon active">
+            <a href="#tab-1">
+              <img src="/assets/github.png"/>
+            </a>
+          </div>
+          <div class="sidebar-icon">
+            <a href="#tab-1">
+              <img src="/assets/github.png"/>
+            </a>
+          </div>
+          <div class="sidebar-icon">
+            <a href="#tab-1">
+              <img src="/assets/github.png"/>
+            </a>
+          </div>
+          <div class="sidebar-icon">
+            <a href="#tab-1">
+              <img src="/assets/github.png"/>
+            </a>
+          </div>
+          <div class="sidebar-icon">
+            <a href="#tab-1">
+              <img src="/assets/github.png"/>
+            </a>
+          </div>
+          <div class="sidebar-icon" id="github-icon">
+            <a href="https://github.com/itaditya/Code-Runner">
+              <img src="/assets/github.png"/>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <script src="/dist/vendor.js"></script>
-  <script src="/dist/app.js"></script>
-</body>
+    <script src="/dist/vendor.js"></script>
+    <script src="/dist/app.js"></script>
+  </body>
 </html>

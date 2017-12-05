@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import codingTemplates from './code_templates';
 import style from './index.scss';
 

@@ -30,21 +30,27 @@ const setLang = lang => {
 };
 
 //Private Functions
-
 const _onChange = event => {
   dispatchEvent('codeEditor:change');
 };
 
 //init
-(() => {
+window.onload = function() {
   //Setup Ace Editor
   editor = ace.edit('editor');
 
   editor.setTheme('ace/theme/solarized_dark');
-  editor.getSession().setUseSoftTabs(true);
-  editor.getSession().setTabSize(2);
-  editor.getSession().setUseWrapMode(true);
-})();
+
+  const session = editor.getSession();
+  session.setUseSoftTabs(true);
+  session.setTabSize(2);
+  session.setUseWrapMode(true);
+
+  const savedProgram = JSON.parse(document.body.dataset.program);
+  const { _id } = savedProgram;
+  if (_id) {
+  }
+};
 
 //Expose Component
 const CodeEditorComp = {
