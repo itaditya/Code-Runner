@@ -15,10 +15,16 @@
     "format": "prettier --write \"**/*.js\"",
     "deploy": "git push heroku master",
     "heroku-postbuild": "npm run build",
-    "precommit": "npm run format"
+    "precommit": "lint-staged"
   },
   "prettier": {
     "singleQuote": true
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
   },
   "keywords": [],
   "author": "Aditya Agarwal <adityaa803@gmail.com> (http://adi.surge.sh/)",
@@ -30,6 +36,7 @@
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.1",
     "husky": "^0.14.3",
+    "lint-staged": "^6.0.0",
     "node-sass": "^4.5.3",
     "prettier": "1.7.4",
     "sass-loader": "^6.0.6",
