@@ -1,4 +1,4 @@
-const events = [];
+const events = {};
 
 export function addEvent(event, listener) {
   if (!events[event]) {

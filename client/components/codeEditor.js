@@ -35,7 +35,7 @@ const _onChange = event => {
 };
 
 //init
-window.onload = function() {
+(() => {
   //Setup Ace Editor
   editor = ace.edit('editor');
 
@@ -50,7 +50,7 @@ window.onload = function() {
   const { _id } = savedProgram;
   if (_id) {
   }
-};
+})();
 
 //Expose Component
 const CodeEditorComp = {
