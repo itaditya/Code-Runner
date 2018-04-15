@@ -10,14 +10,15 @@
 
 ![](https://i.imgur.com/8zOVrfH.gif)
 
-## Future Implementations
+## Roadmap
 
- 1. Code saving in LocalStorage
- 2. Code sharing with permanent url (public/private).
- 3. Live code monitoring - One can see changes done by other in realtime. (Useful for coding interviews).
- 4. Keyboard Control
- 5. Refactor
- 6. Code annotation and an open chat for particular code. (Useful for a user to help debug other's code)
+ [x] Run Github Gists.
+ [ ] Code saving in LocalStorage.
+ [ ] Code sharing with permanent url (public/private).
+ [ ] Live code monitoring - One can see changes done by other in realtime. (Useful for coding interviews).
+ [ ] Keyboard Control
+ [ ] Refactor
+ [ ] Code annotation and an open chat for particular code. (Useful for a user to help debug other's code)
  
 ## Currently Supported Languages
  1. Python
