@@ -59,5 +59,31 @@ module.exports = {
     Program.findById(id, 'title language input sourceCode').then(data => {
       cb(data);
     });
+  },
+  fetchGist(id, cb) {
+    request(
+      {
+        url: `https://api.github.com/gists/${id}`,
+        method: 'GET',
+        headers: {
+          'User-Agent': 'itaditya:CodingRunner'
+        },
+        json: true
+      },
+      (error, response, body) => {
+        const { files } = body;
+        const fileName = Object.keys(files)[0];
+        const fileData = files[fileName];
+
+        const data = {
+          id,
+          input: '',
+          title: fileName,
+          language: fileData.language.toLowerCase(),
+          sourceCode: fileData.content
+        };
+        cb(data);
+      }
+    );
   }
 };

@@ -26,6 +26,18 @@ module.exports = app => {
     });
   });
 
+  app.get('/github/:id', (req, res) => {
+    const { id } = req.params;
+    services.fetchGist(id, body => {
+      if (!body) {
+        res.redirect('/');
+      }
+      res.render('index', {
+        program: body
+      });
+    });
+  });
+
   app.post('/submit', (req, res) => {
     const data = _pick(req.body, ['language', 'input', 'sourceCode']);
     services.submitCode(data, body => {
