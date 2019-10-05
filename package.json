@@ -10,8 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "client": "webpack --watch --env=development",
-    "build": "webpack -p",
+    "client": "webpack --watch --mode development",
+    "build": "webpack",
     "format": "prettier --write \"**/*.js\"",
     "deploy": "git push heroku master",
     "heroku-postbuild": "npm run build",
@@ -37,11 +37,13 @@
     "extract-text-webpack-plugin": "^3.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.8.3",
     "prettier": "1.7.4",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "webpack": "^3.6.0"
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   },
   "dependencies": {
     "ace": "^1.3.0",
