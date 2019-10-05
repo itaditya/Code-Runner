@@ -14,12 +14,12 @@
 
  [x] Run Github Gists.
  [ ] Code saving in LocalStorage.
- [ ] Code sharing with permanent url (public/private).
+ [x] Code sharing with permanent url (public/private).
  [ ] Live code monitoring - One can see changes done by other in realtime. (Useful for coding interviews).
  [ ] Keyboard Control
  [ ] Refactor
  [ ] Code annotation and an open chat for particular code. (Useful for a user to help debug other's code)
- 
+
 ## Currently Supported Languages
  1. Python
  2. C
@@ -27,21 +27,12 @@
  4. Java
  5. Javascript
 
-## How to Contribute
-
- There are various ways you can contribute to this project.
-
-  1. Star the repo and share it with others
-  2. Try it out and report bugs.
-  3. Help me squash these bugs by making neat PRs.
-
 ## Steps to Setup Locally
 
  1. Fork and clone the repo.
  2. In project directory, run `npm i`.
- 3. Go to [glot.io](https://glot.io/account/token), sign in and copy the auth token.
- 4. On terminal run `echo GLOT_TOKEN='your-token' > .env`.
- 5. Now run `npm start` to start the server.
- 6. Run `npm run client` to start webpack build task.
-
-  Note - If you don't have webpack installed globally then run `npm i -g webpack`.
+ 3. Duplicate `.env.example` file and rename the new file to `.env`.
+ 4. Sign up on [glot.io](https://glot.io), then go [here](https://glot.io/account/token).
+ 5. Open the `.env` file and put the glot token in the `GLOT_TOKEN` field.
+ 6. Now run `npm start` to start the server.
+ 7. Run `npm run client` to start webpack build task.
