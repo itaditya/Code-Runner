@@ -76,7 +76,7 @@ function _onKeyDown(event) {
 
   //Event Bindings
   submitProgramElem.addEventListener('click', _onClick);
-  window.addEventListener('keydown', _onKeyDown);
+  editorElement.addEventListener('keydown', _onKeyDown);
 })();
 
 //Expose Component
