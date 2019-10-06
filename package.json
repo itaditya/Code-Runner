@@ -39,6 +39,7 @@
     "lint-staged": "^6.0.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.8.3",
+    "nodemon": "^1.19.3",
     "prettier": "1.7.4",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",

@@ -36,6 +36,8 @@ addEvent('langSel:change', currentLang => {
   language = currentLang;
 });
 
+addEvent('codeEditor:runcode', _onClick);
+
 //Private Functions
 
 async function _onClick(event) {
