@@ -4,7 +4,7 @@ import CodeEditorComp from './codeEditor';
 import { addEvent, dispatchEvent } from '../utilities/eventBus';
 
 //Define Variables
-let submitProgramElem, language, input, sourceCode, editorElement;
+let submitProgramElem, language, input, sourceCode;
 
 //Public Methods
 
@@ -36,6 +36,8 @@ addEvent('langSel:change', currentLang => {
   language = currentLang;
 });
 
+addEvent('codeEditor:runcode', _onClick);
+
 //Private Functions
 
 async function _onClick(event) {
@@ -52,31 +54,13 @@ async function _onClick(event) {
   dispatchEvent('submitProgram:output', output);
 }
 
-let MacCMDPressed = false;
-
-const MacCommandKeys = ['MetaLeft', 'MetaRight'];
-
-function _onKeyDown(event) {
-  if ((event.ctrlKey || MacCMDPressed) && event.keyCode === 13) {
-    _onClick(event);
-  }
-
-  if (MacCommandKeys.includes(event.code)) {
-    MacCMDPressed = true;
-  } else {
-    MacCMDPressed = false;
-  }
-}
-
 //init
 (() => {
   //DOM binding
   submitProgramElem = document.getElementById('submitBtn');
-  editorElement = document.getElementById('editor');
 
   //Event Bindings
   submitProgramElem.addEventListener('click', _onClick);
-  editorElement.addEventListener('keydown', _onKeyDown);
 })();
 
 //Expose Component

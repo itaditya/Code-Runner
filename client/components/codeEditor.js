@@ -34,10 +34,27 @@ const _onChange = event => {
   dispatchEvent('codeEditor:change');
 };
 
+let MacCMDPressed = false;
+
+const MacCommandKeys = ['MetaLeft', 'MetaRight'];
+
+const _onKeydown = event => {
+  if ((event.ctrlKey || MacCMDPressed) && event.keyCode === 13) {
+    dispatchEvent('codeEditor:runcode');
+  }
+
+  if (MacCommandKeys.includes(event.code)) {
+    MacCMDPressed = true;
+  } else {
+    MacCMDPressed = false;
+  }
+};
+
 //init
 (() => {
   //Setup Ace Editor
   editor = ace.edit('editor');
+  editor.container.addEventListener('keydown', _onKeydown);
 
   editor.setTheme('ace/theme/solarized_dark');
 
