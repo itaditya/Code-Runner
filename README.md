@@ -4,7 +4,7 @@
 
 ## Description
 
- Code Runner is an online portal where a user can code in various languages and get the output of the program. Compile time and Run time errors are also shown. User has the ability to add custom input also.
+Code Runner is an online portal where a user can code in various languages and get the output of the program. Compile time and Run time errors are also shown. The user can add custom input also.
 
 
 
