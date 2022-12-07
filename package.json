@@ -52,7 +52,7 @@
     "compression": "^1.7.1",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "lodash": "^4.17.4",
     "method-override": "^2.3.10",
     "mongoose": "^4.13.4",
